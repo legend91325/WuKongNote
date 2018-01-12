@@ -7,7 +7,7 @@ Proposers
 Acceptors 
 Learners
  
-#####Acceptors遵循的规则： 
+##### Acceptors遵循的规则： 
 Acceptor 接收到的首次提案必须同意。
 prepare请求阶段：
 如果后续来的编号new_id大于目前已经通过的old_value值的编号old_id，则Acceptor更新自己同意的编号为new_id
@@ -17,7 +17,7 @@ accept请求阶段：
 Acceptor收到一个编号为new_id的accept请求，只要它还未对编号大于new_id的prepare请求作出响应，它就可以通过这个提案。
 
 
-#####Proposers遵循的规则：
+##### Proposers遵循的规则：
 prepare请求阶段：
 每个Proposer都会有个唯一编号，先prepare 阶段，获取目前已知的最大编号max_id的提议value值
 ，如果没有则自己生成任意value，如果存在max_id，则Proposer的提案也是value
