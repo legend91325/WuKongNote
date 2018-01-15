@@ -1,12 +1,23 @@
 ### Awk
 
+##### 资料地址：
 ~~~
 Awk Tutorial
 https://www.tutorialspoint.com/awk/
+
+AWK 简明教程
+https://coolshell.cn/articles/9070.html
+
+IBM--准备好开始使用 GAWK
+https://www.ibm.com/developerworks/cn/education/aix/au-gawk/
+
+awk从放弃到入门系列
+http://www.zsythink.net/archives/1336
 ~~~
 
 ---
 
+##### 变量参数整理：
 ~~~变量说明
 ARGV 参数变量的数量 包含 awk本身
 CONVFMT 浮点类型精度 默认%.6g
