@@ -13,6 +13,9 @@ https://www.ibm.com/developerworks/cn/education/aix/au-gawk/
 
 awk从放弃到入门系列
 http://www.zsythink.net/archives/1336
+
+Awk by example 练习题
+https://www.ibm.com/developerworks/library/l-awk1/
 ~~~
 
 ---
