@@ -1,6 +1,7 @@
 ### Docker
 
 ~~~
+集装箱 标准化 隔离
 镜像 image 仓库 repository 容器 container
 Build Ship Run
 ~~~
