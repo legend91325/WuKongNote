@@ -24,12 +24,23 @@ prepare请求阶段：
 accept请求阶段：
 如果Proposer 接收到超过半数以上的Acceptor对于它的prepare请求的响应（也就是同意了该提案，及时后续有同意编号更大的prepare请求的值）
 
+
+~~~
+一次性触发：
+一个watch事件将会在数据发生变更时发送给客户端。
+后续变更不会再发送，如果想监听后续变更，需要再次添加一个监听。
+注册监听有时间延迟，期间可能会有事件发生，所以要考虑这种情况。
+~~~
+
+
 ```
 如何浅显易懂地解说 Paxos 的算法？
 https://www.zhihu.com/question/19787937/answer/107750652
-```
-
-```
 【译】Paxos Made Simple
 http://dsdoc.net/paxosmadesimple/index.html
+Apache ZooKeeper Watcher 机制源码解释
+https://www.ibm.com/developerworks/cn/opensource/os-cn-apache-zookeeper-watcher/index.html
+zookeeper 丢失事件/miss event
+http://leibnitz.iteye.com/blog/1880577
 ```
+
