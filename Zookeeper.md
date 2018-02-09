@@ -69,6 +69,15 @@ all of read operations : getData(), getChildren(), and exists()
     delete() will trigger both a data watch and a child watch
     ** There is one case where a watch may be missed: a watch for the existance of a znode not yet created will be missed if the znode is created and deleted while disconnected.**
 ~~~
+Consistency Guarantees
+~~~
+1. Sequential Consistency
+   Updates from a client will be applied in the order that they were sent.
+2. Atomicity
+   Updates either succeed or fail -- there are no partial results.
+3. Single System Image
+   A client will see the same view of the service regardless of the server that it connects to.
+~~~
 
 
 1. [如何浅显易懂地解说 Paxos 的算法？](https://www.zhihu.com/question/19787937/answer/107750652)
