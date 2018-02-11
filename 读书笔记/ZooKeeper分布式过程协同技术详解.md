@@ -1,3 +1,4 @@
+#### 第一部分 ZooKeeper概念和基础
 Znode 
 ~~~
 /master
@@ -21,7 +22,7 @@ ZooKeeper 架构
 ~~~
 会话
 ~~~
-一个客户端只打开一个会话，保证请求FIFO顺序执行。
+一个客户端只打开一个会7话，保证请求FIFO顺序执行。
 如果发生网络分区，导致ZooKeeper与客户端隔离，直到显式关闭这个会话（客户端）或者分区问题修复后，
 ZooKeeper发送的会话超时。 因为ZooKeeper对声明会话超时负责。
 
@@ -33,3 +34,70 @@ ZooKeeper实现中，系统根据每一个更新建立的顺序来分配给事�
 ZooKeeper确保每一个变化相对于所有其他已执行的更新是完全有序的。
 如果一个客户端在位置i观察到一个更新，它就不能连接到只观察到i`<i的服务器上。
 ~~~
+ZooKeeper 实现锁
+~~~
+通过竞争创建/lock 来获取锁（为了防止无法释放问题，创建临时节点）
+~~~
+
+#### 第二部分使用ZooKeeper进行开发
+
+ZooKeeper 管理连接
+~~~
+当连接发生问题，ZooKeeper客户端会主动尝试重新建立通信。
+所以不要关闭会话再启动一个新的会话这样会增加系统的负载，并导致更长事件的中断。
+~~~
+获得管理权
+~~~
+create 操作的两种异常要关注(可能已经成功)：
+   ConnectionLossException(KeeperException的子类)
+   InterruptedException
+~~~
+回调函数处理
+~~~
+因为只有一个线程处理回调函数，所以建议一般不要在回调函数中集中操作或者阻塞操作。
+一遍后续回调调用可以快速被处理。
+~~~
+设置元数据
+~~~
+\workers
+\assign
+\tasks
+\status
+~~~
+流程
+~~~
+---> 申请主节点创建(\master) ephemeral
+---> 设置元数据(\workers \assign \tasks \status)
+---> 其他设置从节点(\workers\work-id【serverid】) ephemeral
+---> 应用程序client 队列化新任务(\tasks\task-id【单调递增，保证唯一】) sequential 不是临时节点
+---> 主节点给从节点分配任务（\assign\worker-id\task-num）,删除任务(\tasks\task-id)
+---> 客户端监视(\status\task-id),任务状态
+~~~
+
+单次触发
+~~~
+匹配监视点条件的第一时间会触发监视点的通知，并且最多通知一次。多个事件会分摊到一个通知上
+~~~
+
+Event
+~~~
+ZooKeeper会话状态（KeeperState）:Disconnected, SyncConnected,AuthFailed
+,ConnectedReadOnly,SaslAuthenticated,Expired
+事件类型(EventType)：NodeCreated，NodeDeleted,NodeDataChanged,NodechildrenChanged,None
+
+exist : NodeCreated,NodeDeleted,NodeDataChanged
+getData:NodeDeleted,NodeDataChanged
+getchildren:NodeChildrenChanged
+~~~
+multiop 原子性执行多个ZooKeeper操作
+
+顺序的保证
+~~~
+写操作顺序，所有服务器并不需要同事执行这些革新，服务器更可能在不同时间执行状态变化，因为它们以不同速度运行。
+但是对应用程序来说，它们感知到的相同更新顺序。ZooKeeper状态要防止通过隐藏通道进行通信。
+
+读操作顺序，不同客户端可能是在不同时间观察到了更新，如果它们在ZooKeeper以外通信，可能读取到错误数据。
+要依据监视事件，去读取数据
+~~~
+
+监视点羊群效应和可扩展性
