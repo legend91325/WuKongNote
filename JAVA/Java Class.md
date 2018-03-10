@@ -26,3 +26,7 @@ Java 类定义和 JVM 规范一起为运行时组装代码定义了功能极其�
 ~~~
 
 [Java 编程的动态性，应用反射](https://www.ibm.com/developerworks/cn/java/j-dyn0715/index.html?ca=drs-)
+
+[java 中的锁 -- 偏向锁、轻量级锁、自旋锁、重量级锁](http://blog.csdn.net/zqz_zqz/article/details/70233767)
+
+[](http://confluence.quantgroup.cn/pages/viewpage.action?pageId=5453326)
