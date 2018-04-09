@@ -30,3 +30,6 @@ Java 类定义和 JVM 规范一起为运行时组装代码定义了功能极其�
 [java 中的锁 -- 偏向锁、轻量级锁、自旋锁、重量级锁](http://blog.csdn.net/zqz_zqz/article/details/70233767)
 
 [](http://confluence.quantgroup.cn/pages/viewpage.action?pageId=5453326)
+
+
+[如何正确地写出单例模式](http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/)
