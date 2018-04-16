@@ -33,3 +33,4 @@ Java 类定义和 JVM 规范一起为运行时组装代码定义了功能极其�
 
 
 [如何正确地写出单例模式](http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/)
+[朝花夕拾——Java静态内部类加载](http://confluence.quantgroup.cn/pages/viewpage.action?pageId=5453326)
