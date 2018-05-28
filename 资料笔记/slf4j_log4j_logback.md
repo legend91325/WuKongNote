@@ -1,10 +1,9 @@
 ### 官方文档的这一段话已经明确描述了三者的关系。slf4j译为简单日志门面，是日志框架的抽象。而log4j和logback是众多日志框架中的几种。
     
 
-![concrete-bindings](/pics/concrete-bindings.png])
 
 
-![concrete-bindings-][concrete-bindings-base64)]
+![concrete-bindings-][concrete-bindings-base64]
 ### 可以看到logback是直接实现了slf4j的接口，是不消耗内存和计算开销的。而log4j不是对slf4j的原生实现，所以slf4j api在调用log4j时需要一个适配层。
     
 [SLF4J user manual](https://www.slf4j.org/manual.html)
