@@ -1,6 +1,7 @@
 ### 官方文档的这一段话已经明确描述了三者的关系。slf4j译为简单日志门面，是日志框架的抽象。而log4j和logback是众多日志框架中的几种。
     
 
+![concrete-bindings](/pics/concrete-bindings.png)
 
 
 ![concrete-bindings-][concrete-bindings-base64]
