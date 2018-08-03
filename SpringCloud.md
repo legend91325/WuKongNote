@@ -127,4 +127,7 @@ https://start.spring.io/
 
 [SpringCloud Eureka自我保护机制](http://cdn2.jianshu.io/p/ee4785a212f6)
 
-[探讨通过Feign配合Hystrix进行调用时异常的处理](http://blog.didispace.com/rencong-1/)       
+[探讨通过Feign配合Hystrix进行调用时异常的处理](http://blog.didispace.com/rencong-1/)     
+
+
+[***Spring Cloud系列-微服务篇(三) Eureka高可用集群 (1)](http://alanzh.com/archives/52/)  
